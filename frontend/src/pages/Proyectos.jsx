@@ -14,6 +14,13 @@ function formatFechaCL(fecha) {
   return `${parts[2]}-${parts[1]}-${parts[0]}`;
 }
 
+
+const MOCK_PROYECTOS = [
+  { id: 1, nombre: 'Mejoramiento Iluminación Central', objetivos: 'Cambio a luminarias LED en áreas comunes', fecha_inicio: '2026-03-01', fecha_fin: '2026-05-01', presupuesto_total: 15000000, estado: 'en_ejecucion' },
+  { id: 2, nombre: 'Reparación Sala de Bombas', objetivos: 'Mantención correctiva urgente', fecha_inicio: '2026-02-15', fecha_fin: '2026-03-30', presupuesto_total: 8000000, estado: 'aprobado' },
+  { id: 3, nombre: 'Habilitación Sala Multiuso', objetivos: 'Remodelación interior', fecha_inicio: '2026-04-01', fecha_fin: '2026-07-01', presupuesto_total: 25000000, estado: 'borrador' },
+];
+
 export default function Proyectos() {
   const [proyectos, setProyectos] = useState([]);
   const [rendiciones, setRendiciones] = useState([]);
@@ -122,9 +129,13 @@ export default function Proyectos() {
           data = JSON.parse(text);
         } catch { data = []; }
         setProyectos(Array.isArray(data) ? data : data.results || []);
+      } else {
+         console.warn("Using Mock Data for Proyectos due to API Error");
+         setProyectos(MOCK_PROYECTOS);
       }
     } catch (err) {
-      setProyectos([]);
+      console.warn("Using Mock Data for Proyectos due to Network Error");
+      setProyectos(MOCK_PROYECTOS);
     }
     setLoading(false);
   }, []);
@@ -193,7 +204,7 @@ export default function Proyectos() {
     const token = localStorage.getItem("access");
 
     if (!comunidadId || !periodoVigente) {
-      alert("Falta información de comunidad o periodo.");
+      alert("Falta información de unidad operativa o periodo.");
       setFormLoading(false);
       return;
     }
@@ -328,7 +339,7 @@ export default function Proyectos() {
         </div>
       </dialog>
 
-      <div className="flex justify-between items-center p-4 bg-base-200 rounded-box">
+      <div className="flex justify-between items-center p-4 glass-header rounded-box border border-base-content/20">
         <div>
           <h2 className="text-2xl font-bold text-primary">Formulación de Proyectos</h2>
           <p className="text-sm opacity-70">Pre-inversión y aprobación</p>
@@ -462,7 +473,7 @@ export default function Proyectos() {
             <div className="alert alert-primary-100 shadow-lg">
               <div>
                 <h3 className="font-bold">Formalización</h3>
-                <div className="text-xs">Al marcar esta casilla, el Presidente de la Comunidad firma digitalmente este proyecto.</div>
+                <div className="text-xs">Al marcar esta casilla, el Presidente de la Unidad Operativa firma digitalmente este proyecto.</div>
               </div>
               <div className="form-control">
                 <label className="label cursor-pointer gap-2">

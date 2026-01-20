@@ -61,7 +61,7 @@ function App() {
           <Route path="/proyectos/:id" element={<ProyectoDetalle />} />
           <Route path="/socios" element={<Socios />} />
           <Route path="/periodos" element={<Periodos />} />
-          <Route path="/periodos" element={<Periodos />} />
+
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>

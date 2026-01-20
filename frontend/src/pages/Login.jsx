@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.ico";
+import logo from "../assets/logo.png";
 
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -71,7 +71,10 @@ export default function Login({ onLogin }) {
         <div className="flex flex-col items-center justify-center mb-4">
           <img src={logo} alt="Logo" className="w-24 h-24" />
           <span className="mt-4 text-base-content text-xl font-semibold">
-            Gestión Comunidades
+            COREFLOW MANAGEMENT
+          </span>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-bold">
+            Industrial Edition
           </span>
         </div>
 
@@ -128,7 +131,7 @@ export default function Login({ onLogin }) {
               <div className="form-control mt-6">
                 <button
                   type="submit"
-                  className="btn btn-neutral w-full"
+                  className="btn btn-primary w-full shadow-lg hover:shadow-primary/50"
                   disabled={loading}
                 >
                   {loading && <span className="loading loading-spinner"></span>}

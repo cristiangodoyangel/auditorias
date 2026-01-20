@@ -1,23 +1,61 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-   themes: all;
- }
-
-:root {
-  --color-primary: #6F574E;
-  --color-primary2: #d1d1d1;
-  --color-primary-focus: #c4af3867;
-  --color-secondary: #3b1f07;
-  --color-warning: #91191f;
-  --color-white: #f4f4f5;
-
-  --bg-sec: #ae9f9a;
-  --bg-tab: #cacaca;
-  --text-sec: #000000;
-
-  font-size: 20px;
-  --hover: {
-    background-color: var(--color-primary-focus);
-  } 
+  themes: dark --default;
 }
 
+@theme {
+  --color-primary: #FF007F;
+  --color-secondary: #1f2937;
+  --color-accent: #FF007F;
+  --color-neutral: #374151;
+  --color-base-100: #111827;
+  --color-base-200: #1f2937;
+  --color-base-300: #374151;
+
+  --font-sans: "Inter", sans-serif;
+}
+
+/* Force dark theme overrides for DaisyUI if the plugin config misses it */
+:root,
+[data-theme="coreflow-dark"] {
+  color-scheme: dark;
+  --p: 330 100% 50%; /* #FF007F (Pink) */
+  --s: 215 28% 17%; /* #1F2937 */
+  --n: 217 19% 27%; /* #374151 */
+  --b1: 220 39% 11%; /* #111827 */
+  --b2: 215 28% 17%; /* #1F2937 */
+  --b3: 217 19% 27%; /* #374151 */
+
+  --rounded-box: 0.2rem;
+  --rounded-btn: 0.2rem;
+  --rounded-badge: 0.2rem;
+}
+
+body {
+  background-color: #111827; /* Force background */
+  color: #e5e7eb;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(31, 41, 55, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-header {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.025em;
+}

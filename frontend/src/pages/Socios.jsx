@@ -77,29 +77,29 @@ export default function Socios() {
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-box bg-base-200 shadow-sm">
         <div>
-          <h2 className="text-2xl font-bold text-primary">Gestión de Socios</h2>
+          <h2 className="text-2xl font-bold text-primary">Gestión de Stakeholders</h2>
           <p className="text-base-content/70">
-            Registro y control de socios de la comunidad
+            Registro y control de activos de la Unidad Operativa
           </p>
         </div>
         {isAdmin && (
           <button className="btn btn-primary" onClick={handleAgregar}>
-            Agregar Socio
+            Agregar Stakeholder
           </button>
         )}
       </div>
 
       <div className="stats stats-vertical lg:stats-horizontal shadow w-full bg-base-100">
         <div className="stat place-items-center">
-          <div className="stat-title text-primary">Socios Totales</div>
+          <div className="stat-title text-primary">Total Stakeholders</div>
           <div className="stat-value text-primary">{socios.length}</div>
         </div>
         <div className="stat place-items-center">
-          <div className="stat-title text-primary">Socios Activos</div>
+          <div className="stat-title text-primary">Stakeholders Activos</div>
           <div className="stat-value text-primary">{sociosActivos}</div>
         </div>
         <div className="stat place-items-center">
-          <div className="stat-title text-primary">Socios Inactivos</div>
+          <div className="stat-title text-primary">Stakeholders Inactivos</div>
           <div className="stat-value text-primary">{sociosInactivos}</div>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default function Socios() {
       {(editando !== null) && (
         <div className="card bg-base-100 shadow-lg">
           <div className="card-body">
-            <h3 className="card-title text-primary">{editando === 'nuevo' ? 'Agregar Socio' : 'Editar Socio'}</h3>
+            <h3 className="card-title text-primary">{editando === 'nuevo' ? 'Agregar Stakeholder' : 'Editar Stakeholder'}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="form-control">
                 <label className="label"><span className="label-text">Nombre</span></label>
@@ -132,7 +132,7 @@ export default function Socios() {
               <div className="form-control md:col-span-2">
                 <label className="label cursor-pointer justify-start gap-4">
                   <input type="checkbox" className="checkbox checkbox-primary" checked={nuevoSocio.activo} onChange={e => setNuevoSocio({ ...nuevoSocio, activo: e.target.checked })} />
-                  <span className="label-text ">Socio Activo</span>
+                  <span className="label-text ">Stakeholder Activo</span>
                 </label>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Socios() {
             { key: 'rut', label: 'RUT' },
             { key: 'direccion', label: 'Dirección' },
             { key: 'telefono', label: 'Teléfono' },
-            { key: 'activo', label: 'Socio Activo' },
+            { key: 'activo', label: 'Estado' },
           ]}
           data={socios}
           renderCell={(row, col) => {
@@ -176,7 +176,7 @@ export default function Socios() {
             }
             return row[col.key] || '';
           }}
-          emptyText="No hay socios registrados"
+          emptyText="No hay stakeholders registrados"
           rowsPerPage={10}
         />
       )}
